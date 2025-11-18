@@ -19,6 +19,6 @@ app.get('/',(req,res)=>{
 app.use('/form',router)
 
 app.listen(port,()=>{
-    console.log(`http://localhost:${port}`);
+    console.log(`${port}`);
     
 })
