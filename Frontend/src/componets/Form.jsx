@@ -32,7 +32,7 @@ function Form() {
       setAlert("Feedback submitted successfully!");
     } catch (error) {
       console.log(error);
-      setAlert("Oops! Server error");
+      setAlert("Server error");
     }
   }
 
