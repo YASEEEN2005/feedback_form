@@ -112,12 +112,7 @@ function Form() {
         >
           Reset
         </button>
-        <button
-          type="reset"
-          className="w-full bg-blue-600 text-white py-2 rounded-xl hover:bg-red-700 transition-all"
-        >
-          Edit
-        </button>
+
 
       </form>
     </div>
