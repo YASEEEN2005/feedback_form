@@ -12,25 +12,27 @@ function Form() {
   const [alert, setAlert] = useState(null);
 
   function inputValues(e) {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value
+    });
   }
-
   function handleRating(value) {
-    setForm({ ...form, rating: value });
+    setForm({
+      ...form,
+      rating: value
+    });
   }
 
   async function formSubmit(e) {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "https://feedback-form-sandy.vercel.app/form",
-        form
-      );
+      await axios.post("https://feedback-form-sandy.vercel.app/api/form", form);
       setForm({ name: "", email: "", message: "", rating: 0 });
-      setAlert(response.data.message);
+      setAlert("Feedback submitted successfully!");
     } catch (error) {
-      console.log(error.response?.data || error.message);
-      setAlert(error.response?.data?.message || "Server error");
+      console.log(error);
+      setAlert("Server error");
     }
   }
 
@@ -75,11 +77,12 @@ function Form() {
             <svg
               key={star}
               onClick={() => handleRating(star)}
-              className={`w-8 h-8 cursor-pointer transition ${
-                star <= form.rating
-                  ? "fill-yellow-400 text-yellow-400"
-                  : "fill-gray-300 text-gray-300"
-              }`}
+              className={`w-8 h-8 cursor-pointer transition 
+                ${
+                  star <= form.rating
+                    ? "fill-yellow-400 text-yellow-400"
+                    : "fill-gray-300 text-gray-300"
+                }`}
               viewBox="0 0 24 24"
             >
               <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279L12 18.896l-7.416 4.517 1.48-8.279L0 9.306l8.332-1.151z" />
@@ -105,11 +108,12 @@ function Form() {
         </button>
         <button
           type="reset"
-          onClick={() => setForm({ name: "", email: "", message: "", rating: 0 })}
           className="w-full bg-red-600 text-white py-2 rounded-xl hover:bg-red-700 transition-all"
         >
           Reset
         </button>
+
+
       </form>
     </div>
   );
