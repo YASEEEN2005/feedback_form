@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 
 connectDb();
 app.get('/',(req,res)=>{
-    res.send("Welcome")
+    res.send("This is the Home page")
 })
 
 app.use('/form',router)
