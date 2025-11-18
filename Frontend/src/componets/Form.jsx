@@ -27,7 +27,7 @@ function Form() {
   async function formSubmit(e) {
     e.preventDefault();
     try {
-      await axios.post("https://feedbackformback.vercel.app/form", form);
+      await axios.post("https://feedback-form-sandy.vercel.app/form", form);
       setForm({ name: "", email: "", message: "", rating: 0 });
       setAlert("Feedback submitted successfully!");
     } catch (error) {

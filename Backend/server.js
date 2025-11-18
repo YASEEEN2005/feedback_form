@@ -3,7 +3,7 @@ const connectDb = require('./Config/db');
 const router = require('./Router/formRouter');
 const cors = require('cors')
 const app = express()
-const port = 'https://feedbackformback.vercel.app/';
+const port = 'https://feedback-form-sandy.vercel.app/';
 require('dotenv').config();
 
 app.use(cors())

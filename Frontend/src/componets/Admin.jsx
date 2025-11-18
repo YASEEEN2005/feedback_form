@@ -7,7 +7,7 @@ function Admin() {
   useEffect(() => {
     async function getData() {
       try {
-        const res = await axios.get("http://localhost:3000/form");
+        const res = await axios.get("https://feedback-form-sandy.vercel.app/form");
         setData(res.data);
       } catch (error) {
         console.log(error);
@@ -20,7 +20,7 @@ function Admin() {
     const ok = window.confirm("Are you sure you want to delete this feedback?");
     if (!ok) return;
     try {
-      const res = await axios.delete(`http://localhost:3000/form/${id}`);
+      const res = await axios.delete(`https://feedback-form-sandy.vercel.app/form/${id}`);
       console.log(res.data);
       setData((prev) => prev.filter((item) => item._id !== id));
     } catch (error) {
