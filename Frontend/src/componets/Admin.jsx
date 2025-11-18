@@ -4,36 +4,35 @@ import React, { useEffect, useState } from "react";
 function Admin() {
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    async function getData() {
-      try {
-        const res = await axios.get(
-          "https://feedback-form-sandy.vercel.app/api/form"
-        );
-        setData(res.data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    getData();
-  }, []);
-
-  async function deleteData(id) {
-    const ok = window.confirm("Are you sure you want to delete this feedback?");
-    if (!ok) return;
-
+useEffect(() => {
+  async function getData() {
     try {
-      const res = await axios.delete(
-        `https://feedback-form-sandy.vercel.app/api/delete?id=${id}`
+      const res = await axios.get(
+        "https://feedback-form-sandy.vercel.app/form"
       );
-
-      console.log(res.data);
-
-      setData((prev) => prev.filter((item) => item._id !== id));
+      setData(res.data);
     } catch (error) {
       console.log(error);
     }
   }
+  getData();
+}, []);
+
+async function deleteData(id) {
+  const ok = window.confirm("Are you sure you want to delete this feedback?");
+  if (!ok) return;
+
+  try {
+    await axios.delete(
+      `https://feedback-form-sandy.vercel.app/delete/${id}`
+    );
+
+    setData((prev) => prev.filter((item) => item._id !== id));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 
   function formatDate(dateString) {
     const date = new Date(dateString);
